@@ -3,6 +3,8 @@ package com.workshop.api.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.workshop.api.dto.AuthorDTO;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -27,5 +29,5 @@ public class Post implements Serializable {
     private Date date;
     private String title;
     private String body;
-    private User author;
+    private AuthorDTO author;
 }

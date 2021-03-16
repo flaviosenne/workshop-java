@@ -6,6 +6,7 @@ import java.util.TimeZone;
 
 import com.workshop.api.domain.Post;
 import com.workshop.api.domain.User;
+import com.workshop.api.dto.AuthorDTO;
 import com.workshop.api.repository.PostRepository;
 import com.workshop.api.repository.UserRepository;
 
@@ -34,10 +35,11 @@ public class Instantiation implements CommandLineRunner {
         User bob = new User(null, "Bob Grey", "bob@email.com");
 
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu Viagem", "Vou viajar para São Paulo", maria);
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acrodei Feliz hoje", maria);
-       
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu Viagem", "Vou viajar para São Paulo", new AuthorDTO(maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acrodei Feliz hoje", new AuthorDTO(maria));
+       
         postRepository.saveAll(Arrays.asList(post1, post2));
 
     }
