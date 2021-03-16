@@ -3,6 +3,7 @@ package com.workshop.api.resources;
 import java.net.URI;
 import java.util.List;
 
+import com.workshop.api.domain.Post;
 import com.workshop.api.domain.User;
 import com.workshop.api.dto.UserDTO;
 import com.workshop.api.services.UserService;
@@ -64,5 +65,11 @@ public class UserController {
         user.setId(id);
         user = userService.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = userService.findById(id);
+        return ResponseEntity.status(200).body(user.getPosts());
     }
 }
