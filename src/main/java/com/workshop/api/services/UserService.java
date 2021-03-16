@@ -58,11 +58,8 @@ public class UserService {
 
     public User fromDTO(UserDTO userDTO){
         
-        return User.builder()
-        .id(userDTO.getId())
-        .email(userDTO.getEmail())
-        .name(userDTO.getName())
-        .build();
+        return new User(userDTO.getId(), userDTO.getEmail(), userDTO.getName());
+       
     }
 
 }
