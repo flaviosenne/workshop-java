@@ -38,4 +38,12 @@ public class UserService {
 
         return user.get();
     }
+
+    public User fromDTO(UserDTO userDTO){
+        return User.builder()
+        .id(userDTO.getId())
+        .email(userDTO.getEmail())
+        .name(userDTO.getName())
+        .build();
+    }
 }
