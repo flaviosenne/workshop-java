@@ -39,7 +39,13 @@ public class UserService {
         return user.get();
     }
 
+    public void delete(String id){
+        this.findById(id);
+        userRepository.deleteById(id);
+    }
+
     public User fromDTO(UserDTO userDTO){
+        
         return User.builder()
         .id(userDTO.getId())
         .email(userDTO.getEmail())
