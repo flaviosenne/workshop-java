@@ -1,5 +1,6 @@
 package com.workshop.api.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.workshop.api.domain.Post;
@@ -27,5 +28,8 @@ public class PostService {
         return post.get();
     }
 
+    public List<Post> findByTitle(String text){
+        return postRepository.findByTitleContainingIgnoreCase(text);
+    }
     
 }
