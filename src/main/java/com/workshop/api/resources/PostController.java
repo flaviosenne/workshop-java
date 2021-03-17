@@ -1,5 +1,6 @@
 package com.workshop.api.resources;
 
+import java.util.Date;
 import java.util.List;
 
 import com.workshop.api.domain.Post;
@@ -37,4 +38,19 @@ public class PostController {
         return ResponseEntity.status(200).body(list);
     }
 
+    @GetMapping(value = "/fullsearch")
+    public ResponseEntity<List<Post>> fullSearch(
+        @RequestParam(value = "text", defaultValue = "") String text,
+        @RequestParam(value = "minDate", defaultValue = "") String minDate,
+        @RequestParam(value = "maxDate", defaultValue = "") String maxDate
+    ){
+
+        text = URL.decodeParam(text);
+        Date min =URL.convertDate(minDate, new Date(0L));
+        Date max =URL.convertDate(minDate, new Date());
+
+        List<Post> list = postService.fullSearch(text, min, max);
+        
+        return ResponseEntity.status(200).body(list);
+    }
 }
